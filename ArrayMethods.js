@@ -79,3 +79,9 @@ const obj1 = {
   },
 };
 console.log(obj1.address.country);
+
+//difference between map and forEach?
+//map returns the new array with elements that matches the condition and forEach perform the task on the same array like it modify the array
+//difference between filter and find? filter return the array that satisfy the condition and find return the very element that satisfy the condition
+//how reduce work internally? it iterate over the array and perform the task on each element and return the result as a single value
+// slice: donot change the original array. splice: modify the original array
