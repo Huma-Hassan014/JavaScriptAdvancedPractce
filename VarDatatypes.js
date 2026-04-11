@@ -67,7 +67,7 @@ obj2.name =  "Aman" //by changing the value of the obj2 the value of obj1 is als
 //console.log(1 + "1"); //11
 //console.log(1 + 1); //2
 //console.log(1 + "1" + 1); //111
-//== vs ===
+//✅ Difference between == vs ===
 //console.log(5=="5") //true
 //console.log(5==="5") //false check both datatype and value
 
