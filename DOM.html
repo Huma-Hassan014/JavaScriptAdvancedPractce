@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <h1 id="title">This is Dom practice</h1>
+    <input type="text" placeholder="Enter you thinking">
+    <button id="btn">Click</button> -->
+
+    <!-- Practice with mini project -->
+      <h1 id="project">Type your feedback</h1>
+      <input id = "feedback" type="text" placeholder="Enter your Feedback">
+      <button id="bttn">Submit</button>
+      <p id="data">youe text will be show here</p>
+</body>
+<script>
+    //select the element by usig id
+// let heading = document.getElementById("title")
+// heading.style.color = "red"
+
+// let btn = document.querySelector("#btn")
+// btn.addEventListener("click", ()=>{
+//     confirm("Are you coder!")
+//     btn.style.width = "50px"
+//      btn.style.color = "red"
+// })
+
+// let inpt = document.querySelector("input")
+// inpt.addEventListener("input", (e)=>{
+//     console.log(e.target.value)
+// })
+
+// heading.textContent = "Hello Huma";
+//what is the reference error? when variable name doesnt match with the scope 
+let project = document.getElementById("project")
+project.style.color = "Purple"
+
+
+let feedback = document.getElementById("feedback")
+let bttn = document.getElementById("bttn")
+bttn.style.color = "red"
+
+let data = document.getElementById("data")
+
+bttn.addEventListener("click", ()=>{
+    data.textContent = feedback.value
+})
+
+</script>
+</html>
