@@ -78,22 +78,35 @@
 // console.log(Palindrom(h))
 
 //Task 7
-const prime = (n) => {
-    if (n <=1 ) 
-        return false
+// const prime = (n) => {
+//     if (n <=1 ) 
+//         return false
 
-    for (let i = 2; i < n ; i++){
-        if(n % i == 0){
-            console.log("Not a prime: ", n)
-            return false
-        }
-    }
-        console.log("Prime: ", n)
-    return true
-}
-let p = prompt("Enter the Number to find prime: ")
-p = Number(p)
-console.log(prime(p))
+//     for (let i = 2; i < n ; i++){
+//         if(n % i == 0){
+//             console.log("Not a prime: ", n)
+//             return false
+//         }
+//     }
+//         console.log("Prime: ", n)
+//     return true
+// }
+// let p = prompt("Enter the Number to find prime: ")
+// p = Number(p)
+// prime(p)
 
 //Task 8
 
+const number = (n) => {
+    let val = n[0]
+    for (let i = 0; i < n.length ; i++){
+        
+        if(n[i] > val)
+            val = n[i]           
+    }
+     console.log("Greatest number:", val)   
+}
+
+//         0  1  2  3   4  5
+let arr = [2, 5, 6, 70, 1, 9]
+number(arr)
