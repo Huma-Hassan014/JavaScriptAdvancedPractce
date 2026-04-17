@@ -46,36 +46,64 @@
 //The callback hell solved by promis 
 //Promise: Give the future result reject/resolve
 
-const p = new Promise((resolve, reject)=>{
-    let success = true
-    if (success){
-        resolve("Success")
-    }
-    else {
-        reject ("Error")
-    }
-})
+// const p = new Promise((resolve, reject)=>{
+//     let success = true
+//     if (success){
+//         resolve("Success")
+//     }
+//     else {
+//         reject ("Error")
+//     }
+// })
 
-// p.then(result => console.log(result))
-// p.catch(error => console.log(error))
-//then: it is used to handle the success case.
-//catch: it is used to handle the error case.
+// // p.then(result => console.log(result))
+// // p.catch(error => console.log(error))
+// //then: it is used to handle the success case.
+// //catch: it is used to handle the error case.
 
-//in form api calling
-// function fetchData(){
-//     return new Promise((resolve, reject)=>{
-//         fetch("https://jsonplaceholder.typicode.com/todos/1")
-//         .then(res => res.json())
-//         .then(json => resolve(json))
-//         .catch(err => reject(err))
+// //in form api calling
+// // function fetchData(){
+// //     return new Promise((resolve, reject)=>{
+// //         fetch("https://jsonplaceholder.typicode.com/todos/1")
+// //         .then(res => res.json())
+// //         .then(json => resolve(json))
+// //         .catch(err => reject(err))
+// //     })
+// // }
+// // fetchData().then(data => console.log(data))
+// // fetchData().catch(error => console.log(error))
+
+// function practice(){
+//     return Promise((resolve, reject)=>{
+//         fetch()
 //     })
 // }
-// fetchData().then(data => console.log(data))
-// fetchData().catch(error => console.log(error))
 
-function practice(){
-    return Promise((resolve, reject)=>{
-        fetch()
-    })
+
+// //3. async/await
+
+// async function getData() {
+//   try {
+//     const data = await fetchData();
+//     console.log(data);
+//   } catch (err) {
+//     console.error(err);
+//   }
+// }
+// getData();
+
+//Practice
+async function displayDashboard(){
+    try{
+        const res = await fetch ('https://api.example.com/user')
+        const users = await res.json();
+        const post = await fetch (`https://api.example.com/posts?userId=${users.id}`)
+        const posts = a wait post.json();
+        console.log(users)
+        console.log(posts)
+    }
+    catch(err){
+        console.error(err)
+    }
 }
-
+displayDashboard()

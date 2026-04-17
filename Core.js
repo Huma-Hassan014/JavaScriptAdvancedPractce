@@ -102,3 +102,23 @@ console.log(c1()) //1
 console.log(c1()) //2
 //console.log(c2()) //1
 //Each function call creates its own closure with its own separate memory space.
+
+
+//this keyword: it efers to the object that the function is called on.
+const obj = {
+    name: "Huma",
+    greet: function() {
+        console.log(this.name)
+    }
+}
+
+obj.greet()//huma
+
+//In arrow function it return undefined beacause the this keyword is not available.
+//Example
+const arrowGreet = () => {
+    console.log(this.name)
+}
+arrowGreet()//undefined
+//Explanation: arrow function does not have its own this binding. It inherits the this binding from the enclosing scope.
+//In this case, the enclosing scope is the global scope, and the global keyword is undefined.
