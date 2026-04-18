@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Randon Recpie Generator</title>
+    <style>
+      body {
+        background-color: #f3e5f5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        font-family: sans-serif;
+      }
+      .recipe-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 20px;
+        box-shadow: 0 10px 20px rgba(149, 117, 205, 0.3);
+        max-width: 500px;
+        text-align: center;
+      }
+      #meal-image {
+        width: 100%;
+        border-radius: 15px;
+        margin: 15px 0;
+      }
+      button {
+        background-color: #7e57c2;
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="recipe-card">
+      <h1 id="meal-name">Loading...</h1>
+      <img id="meal-image" src="" style="display: none" />
+      <p id="meal-instruction">Please wait, we are loading for the recipe...</p>
+      <button id="generate-btn">Generate New</button>
+    </div>
+  </body>
+  <script>
+    const name = document.getElementById("meal-name");
+    const image = document.getElementById("meal-image");
+    const instruction = document.getElementById("meal-instruction");
+    const btn = document.getElementById("generate-btn")
+
+    async function getData() {
+        try{
+              const res = await fetch('https://www.themealdb.com/api/json/v1/1/random.php');
+              const recpie = await res.json()
+
+              const meal = recpie.meals[0];
+
+              //update the ui
+              name.innerText = meal.strMeal;
+              image.src = meal.strMealThumb;
+              image.style.display = "block";
+              instruction.innerText = meal.strInstructions;
+        }
+      catch(error){
+        name.innerText = "Error fetching recipe!";
+        console.log("Somethig went wronge...", error)
+      }
+    }
+    btn.addEventListener('click', getData )
+    getData();
+  </script>
+</html>
+
+
+//I know this is very very basic project. But during this project i actually combiningly 
+//do practice of html css and js and understand how actaully the api is call and how it connect with html properly
+
