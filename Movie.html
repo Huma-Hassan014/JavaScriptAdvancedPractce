@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Info Finder</title>
+    <style>
+        /* Styling the search area */
+.search-container {
+    margin-bottom: 20px;
+}
+
+#movie-input {
+    padding: 10px;
+    border: 2px solid #ce93d8; /* Soft purple border */
+    border-radius: 8px;
+    outline: none;
+    width: 250px;
+}
+
+#movie-input:focus {
+    border-color: #7e57c2; /* Darker purple when clicked */
+}
+
+#search-btn {
+    padding: 10px 20px;
+    background-color: #7e57c2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Styling the result */
+#movie-result {
+    margin-top: 20px;
+}
+
+#movie-result img {
+    max-width: 200px; /* Poster constraint */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+    </style>
+</head>
+<body>
+   <div class="search-container">
+    <input type="text" id="movie-input" placeholder="Enter movie name">
+    <button id="search-btn">Search</button>
+</div>
+
+<div id="movie-result">
+    <h4 id="title">Search for a movie!</h4>
+    <h4 id="year"></h4>
+    <img id="movie-poster" src="" style="display: none" />
+</div>
+</body>
+<script>
+const btn = document.getElementById('search-btn');
+const input = document.getElementById('movie-input');
+const titleEl = document.getElementById('title');
+const yearEl = document.getElementById('year');
+const posterEl = document.getElementById('movie-poster');
+
+async function getMovie(params) {
+    const query = input.value;
+    if(query === ""){
+        alert("Please Enter the Movie name! ");
+        return
+}
+try{
+    const res = await fetch(`https://www.omdbapi.com/?t=${query}&apikey=trilogy`);
+    const data = await res.json();
+
+    if(data.Response === "True"){
+        titleEl.innerText = data.Title;
+        yearEl.innerText = data.Year;
+        posterEl.src = data.Poster;
+        posterEl.style.display = "block";
+    }
+    else {
+            titleEl.innerText = "Movie not found!";
+            posterEl.style.display = "none";
+        }
+    } catch (error) {
+        console.error("Error:", error);
+    }
+}
+btn.addEventListener('click', getMovie);
+</script>
+</html>
+
+<!-- In this task, I learned how to use async and await to pause my code and wait for data to arrive from an external server. I learned how to make my applications dynamic by using Template Literals to inject user input directly into an API URL. I learned the importance of Input Validation, ensuring that my code checks if a field is empty before making a network request. I learned how to handle API responses properly by checking status flags like data.Response to handle cases where no results are found. Finally, I learned how to connect HTML, CSS, and JavaScript together to build a functional search engine with a clean, lavender-themed user interface. -->
